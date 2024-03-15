@@ -66,13 +66,13 @@ int main()
     // Formen* ptr_f;  // Wird auf dem Stack angelegt (Wenn "new" oder "malloc" verwendet wird, landet es auf dem heap)
     while (!abbruch) {
         int formauswahl = 0;
-        std::cout << "Bitte für Dreieck 1 eingeben, für Viereck 2, oder für Kreis 3: " << std::endl;
+        std::cout << "Bitte fuer Dreieck 1 eingeben, fuer Viereck 2,  fuer Kreis 3, oder fuer Abbrauch 0: " << std::endl;
         std::cin >> formauswahl; //(Dreieck, Viereck, Kreis?)
         switch (formauswahl) {
         case 1:
         {
             float length, height;
-            std::cout << "Bitte Länge der Grundlinie und Höhe des Dreiecks eingeben:" << std::endl;
+            std::cout << "Bitte Laenge der Grundlinie und Hoehe des Dreiecks eingeben:" << std::endl;
             std::cin >> length;
             std::cin >> height;
             Dreieck dreieck(height, length);
@@ -82,13 +82,13 @@ int main()
 
         case 2:
         {
-            std::cout << "Bitte Länge und Breite des Vierecks eingeben:" << std::endl;
+            std::cout << "Bitte Laenge und Breite des Vierecks eingeben:" << std::endl;
             float width, length;
             std::cin >> width;
             std::cin >> length;
             Viereck vierEck(width, length);
             formen.push_back(&vierEck);
-            std::cout << "Formen Länge: " << formen[0]->area() << std::endl;
+            std::cout << "Formen Laenge: " << formen[0]->area() << std::endl;
             break;
         }
         case 3:
@@ -112,4 +112,7 @@ int main()
     
 
     };
+    for (int i = 0; i < formen.size(); ++i) {
+        std::cout << formen[i]->area() << std::endl; //druecken Objekten in Vector.
+    }
 };

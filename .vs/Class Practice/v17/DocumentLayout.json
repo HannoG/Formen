@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\APS Games\\Documents\\_coding\\KarriereTutor\\C\u002B\u002B_Projekte\\Formen\\Formen\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79FB4C78-C0B1-4AAD-A9FB-39379CC50F0B}|Class Practice.vcxproj|C:\\Users\\APS Games\\Documents\\_coding\\KarriereTutor\\C\u002B\u002B_Projekte\\Formen\\Formen\\Class Practice.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{79FB4C78-C0B1-4AAD-A9FB-39379CC50F0B}|Class Practice.vcxproj|solutionrelative:Class Practice.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class Practice.cpp",
+              "DocumentMoniker": "C:\\Users\\APS Games\\Documents\\_coding\\KarriereTutor\\C\u002B\u002B_Projekte\\Formen\\Formen\\Class Practice.cpp",
+              "RelativeDocumentMoniker": "Class Practice.cpp",
+              "ToolTip": "C:\\Users\\APS Games\\Documents\\_coding\\KarriereTutor\\C\u002B\u002B_Projekte\\Formen\\Formen\\Class Practice.cpp",
+              "RelativeToolTip": "Class Practice.cpp",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAAAHoAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-15T10:04:15.089Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

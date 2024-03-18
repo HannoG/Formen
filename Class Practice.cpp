@@ -112,7 +112,12 @@ int main()
     
 
     };
+    float areaAllForms = 0;
     for (int i = 0; i < formen.size(); ++i) {
-        std::cout << formen[i]->area() << std::endl; //druecken Objekten in Vector.
+        areaAllForms += formen[i]->area();
+        //std::cout << formen[i];
+        //Ausgabe der Flächen je Körper wäre noch gut.
+        
     }
+    std::cout << "Die Gesamtfläche aller eingegebenen Formen: " << areaAllForms << std::endl; //Ausgabe der Fläche insgesamt.
 };

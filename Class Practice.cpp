@@ -6,67 +6,102 @@
 class Formen
 {
 public:
+    enum classID { idViereck, idDreieck, idKreis }; // Compiler macht die Unterscheidung intern
     virtual float area() = 0;
+    virtual classID getClassID() = 0; // nimmt die enum IDs
+    virtual std::string getClassName() {}; // für die Ausgabe
 
 };
 
 class Viereck : public Formen
 {
 public:
-    float width = 0;
-    float length = 0;
+    float mWidth = 0;
+    float mLength = 0;
 
     Viereck(float width, float length) {
-        this->width = width;
-        this->length = length;
+        mWidth = width;
+        mLength = length;
+
     }
 
-     float area() override
+    float area() override
     {
-        return this->width * this->length;
+        return mWidth * mLength;
+    }
+
+    virtual std::string getClassName() override
+    {
+        return "Viereck";
+    }
+    virtual classID getClassID() override // überladen der geerbten virtuellen Funktion getClassID
+    {
+        return idViereck;
     }
 
 };
 class Dreieck : public Formen
 {
 public:
-    float height = 0;
-    float length = 0;
+    // m für Membervariable, s für staticvariable, c für Konstante als Präfix
+    // ist sinnvoll, weil die Schreibweise für Member in C++ sonst nicht erkennen, 
+    // dass Klassenvariablen gemeint sind. Ist eine Möglichkeit, sonst this-> geht auch
+    float mHeight = 0;
+    float mLength = 0;
 
     Dreieck(float height, float length) {
-        this->height = height;
-        this->length = length;
+        mHeight = height;
+        mLength = length;
     }
 
     float area() override
     {
 
-        return (this->height * this->length) * 0.5;
+        return (mHeight * mLength) * 0.5;
+    }
+
+    virtual std::string getClassName() override // overloading der geerbten virtuellen Funktion getType
+    {
+        return "Dreieck";
+    }
+    virtual classID getClassID() override // overloading der geerbten virtuellen Funktion getType
+    {
+        return idViereck;
     }
 
 };
 class Kreis : public Formen
 {
 public:
-    float radius = 0;
+    float mRadius = 0;
     Kreis(float radius) {
-        this->radius = radius;
+        mRadius = radius;
     }
 
     float area() override
     {
-        return this->radius * this->radius * M_PI;
+        return mRadius * mRadius * M_PI;
+    }
+
+    virtual std::string getClassName() override // overloading der geerbten virtuellen Funktion getClassName
+    {
+        return "Kreis";
+    }
+    virtual classID getClassID() override // overloading der geerbten virtuellen Funktion getClassID
+    {
+        return idKreis;
     }
 };
 
 int main()
 {
     bool abbruch = false;
-    std::vector <Formen*> formen={};
+    std::vector <Dreieck> dreiecke = {};
+    std::vector <Formen*> formen = {}; // durch Pointer bei Formen kann der Compiler den benötigten Speicherbereich anlegen.
     // Formen* ptr_f;  // Wird auf dem Stack angelegt (Wenn "new" oder "malloc" verwendet wird, landet es auf dem heap)
     while (!abbruch) {
         int formauswahl = 0;
-        std::cout << "Bitte fuer Dreieck 1 eingeben, fuer Viereck 2,  fuer Kreis 3, oder fuer Abbrauch 0: " << std::endl;
+        std::cout << "Bitte fuer Dreieck 1 eingeben, fuer Viereck 2,  fuer Kreis 3, oder fuer Abbruch 0: " << std::endl;
         std::cin >> formauswahl; //(Dreieck, Viereck, Kreis?)
         switch (formauswahl) {
         case 1:
@@ -75,9 +110,11 @@ int main()
             std::cout << "Bitte Laenge der Grundlinie und Hoehe des Dreiecks eingeben:" << std::endl;
             std::cin >> length;
             std::cin >> height;
-            Dreieck dreieck(height, length);
-            formen.push_back(&dreieck);
-            break;
+            formen.push_back(new Dreieck(height, length)); // wird auf dem Heap erstellt
+            // Dreieck dreieck(height, length); // Lokales Objekt existiert nur bis }
+            // formen.push_back(&dreieck);
+            break;  // Lokal angelegtes objekt dreieck im Vector wird nach dem break wieder zerstört, 
+            // dadurch zeigt der Pointer dann auf einen Zombie
         }
 
         case 2:
@@ -86,8 +123,7 @@ int main()
             float width, length;
             std::cin >> width;
             std::cin >> length;
-            Viereck vierEck(width, length);
-            formen.push_back(&vierEck);
+            formen.push_back(new Viereck(width, length));
             std::cout << "Formen Laenge: " << formen[0]->area() << std::endl;
             break;
         }
@@ -96,8 +132,7 @@ int main()
             float radius;
             std::cout << "Bitte Radius des Kreises eingeben:" << std::endl;
             std::cin >> radius;
-            Kreis kreis(radius);
-            formen.push_back(&kreis);
+            formen.push_back(new Kreis(radius));
             break;
         }
         case 0:
@@ -109,15 +144,58 @@ int main()
         /*default:
             break*/;
         };
-    
+
 
     };
+
     float areaAllForms = 0;
+    float dreieckflaeche_gesamt = 0;
+    float viereckflaeche_gesamt = 0;
+    float kreisflaeche_gesamt = 0;
+
     for (int i = 0; i < formen.size(); ++i) {
         areaAllForms += formen[i]->area();
+        switch (formen[i]->getClassID()) {
+        case Formen::idDreieck:
+        {
+            std::cout << "Dreiecktest" << std::endl;
+        }
+        case Formen::idViereck:
+        {
+
+        }
+        case Formen::idKreis:
+        {
+
+        }
+        }
+        if (formen[i]->getClassName() == "Dreieck")
+        {
+            dreieckflaeche_gesamt += formen[i]->area();
+        }
+        // Todo: std::cout << "Gesamtflaeche Vierecke: " ;
+        else if (formen[i]->getClassName() == "Viereck")
+        {
+            viereckflaeche_gesamt += formen[i]->area();
+        }
+        // Todo: std::cout << "Gesamtflaeche Kreis: " ;
+        else if (formen[i]->getClassName() == "Kreis")
+        {
+            kreisflaeche_gesamt += formen[i]->area();
+        }
         //std::cout << formen[i];
-        //Ausgabe der Flächen je Körper wäre noch gut.
-        
+        //if( formen[i]->getType() == "Dreieck")
+        //    dreieckflaeche_gesamt += Dreieck.area
+        // best practice ist Zugriffsfunktion
+        //std::cout << formen[i]->getClassName() << " " << formen[i]->area() << std::endl;
+
     }
-    std::cout << "Die Gesamtfläche aller eingegebenen Formen: " << areaAllForms << std::endl; //Ausgabe der Fläche insgesamt.
+
+    std::cout << "Gesamtflaeche Dreiecke: " << dreieckflaeche_gesamt << std::endl;
+    std::cout << "Gesamtflaeche Vierecke: " << viereckflaeche_gesamt << std::endl;
+    std::cout << "Gesamtflaeche Kreis: " << kreisflaeche_gesamt << std::endl;
+    std::cout << "Die Gesamtflaeche aller eingegebenen Formen: " << areaAllForms << std::endl; //Ausgabe der Fläche insgesamt.
+
+    // Einzelne Objekte, auf die der Vector zeigt, müssen hier noch per delete gelöscht werden, wenn sauber gearbeitet wird.
+    // Todo: Objekte des Vectors am Ende löschen.
 };

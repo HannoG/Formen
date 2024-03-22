@@ -96,7 +96,7 @@ public:
 int main()
 {
     bool abbruch = false;
-    std::vector <Dreieck> dreiecke = {};
+
     std::vector <Formen*> formen = {}; // durch Pointer bei Formen kann der Compiler den benötigten Speicherbereich anlegen.
     // Formen* ptr_f;  // Wird auf dem Stack angelegt (Wenn "new" oder "malloc" verwendet wird, landet es auf dem heap)
     while (!abbruch) {

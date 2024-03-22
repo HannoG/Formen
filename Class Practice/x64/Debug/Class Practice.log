@@ -1,2 +1,2 @@
-﻿Class Practice.cpp(121,31): warning : illegal character encoding in string literal [-Winvalid-source-encoding]
-  Class Practice.vcxproj -> C:\Users\APS Games\Documents\_coding\KarriereTutor\C++_Projekte\Formen\Formen\x64\Debug\Class Practice.exe
+﻿Class Practice.cpp(12,41): warning : non-void function does not return a value [-Wreturn-type]
+  Class Practice.vcxproj -> C:\Users\APS Games\Documents\_coding\KarriereTutor\C++_Projekte\Formen\Formen\Formen\x64\Debug\Class Practice.exe

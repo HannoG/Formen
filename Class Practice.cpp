@@ -1,6 +1,6 @@
 #include<vector>
 #include <iostream>
-#ifndef M_PI // cmath oder numbers hatte nicht funktioniert, deshalb über diese Lösung erstmal PI definiert.
+#ifndef M_PI // cmath oder numbers hatte nicht funktioniert, deshalb ï¿½ber diese Lï¿½sung erstmal PI definiert.
 #define M_PI 3.14159265358979323846
 #endif
 class Formen
@@ -9,7 +9,7 @@ public:
     enum classID { idViereck, idDreieck, idKreis }; // Compiler macht die Unterscheidung intern
     virtual float area() = 0;
     virtual classID getClassID() = 0; // nimmt die enum IDs
-    virtual std::string getClassName() {}; // für die Ausgabe
+    virtual std::string getClassName() {}; // fï¿½r die Ausgabe
 
 };
 
@@ -34,7 +34,7 @@ public:
     {
         return "Viereck";
     }
-    virtual classID getClassID() override // überladen der geerbten virtuellen Funktion getClassID
+    virtual classID getClassID() override // ï¿½berladen der geerbten virtuellen Funktion getClassID
     {
         return idViereck;
     }
@@ -43,9 +43,9 @@ public:
 class Dreieck : public Formen
 {
 public:
-    // m für Membervariable, s für staticvariable, c für Konstante als Präfix
-    // ist sinnvoll, weil die Schreibweise für Member in C++ sonst nicht erkennen, 
-    // dass Klassenvariablen gemeint sind. Ist eine Möglichkeit, sonst this-> geht auch
+    // m fï¿½r Membervariable, s fï¿½r staticvariable, c fï¿½r Konstante als Prï¿½fix
+    // ist sinnvoll, weil die Schreibweise fï¿½r Member in C++ sonst nicht erkennen, 
+    // dass Klassenvariablen gemeint sind. Ist eine Mï¿½glichkeit, sonst this-> geht auch
     float mHeight = 0;
     float mLength = 0;
 
@@ -97,7 +97,7 @@ int main()
 {
     bool abbruch = false;
 
-    std::vector <Formen*> formen = {}; // durch Pointer bei Formen kann der Compiler den benötigten Speicherbereich anlegen.
+    std::vector <Formen*> formen = {}; // durch Pointer bei Formen kann der Compiler den benï¿½tigten Speicherbereich anlegen.
     // Formen* ptr_f;  // Wird auf dem Stack angelegt (Wenn "new" oder "malloc" verwendet wird, landet es auf dem heap)
     while (!abbruch) {
         int formauswahl = 0;
@@ -113,7 +113,7 @@ int main()
             formen.push_back(new Dreieck(height, length)); // wird auf dem Heap erstellt
             // Dreieck dreieck(height, length); // Lokales Objekt existiert nur bis }
             // formen.push_back(&dreieck);
-            break;  // Lokal angelegtes objekt dreieck im Vector wird nach dem break wieder zerstört, 
+            break;  // Lokal angelegtes objekt dreieck im Vector wird nach dem break wieder zerstï¿½rt, 
             // dadurch zeigt der Pointer dann auf einen Zombie
         }
 
@@ -194,8 +194,8 @@ int main()
     std::cout << "Gesamtflaeche Dreiecke: " << dreieckflaeche_gesamt << std::endl;
     std::cout << "Gesamtflaeche Vierecke: " << viereckflaeche_gesamt << std::endl;
     std::cout << "Gesamtflaeche Kreis: " << kreisflaeche_gesamt << std::endl;
-    std::cout << "Die Gesamtflaeche aller eingegebenen Formen: " << areaAllForms << std::endl; //Ausgabe der Fläche insgesamt.
+    std::cout << "Die Gesamtflaeche aller eingegebenen Formen: " << areaAllForms << std::endl; //Ausgabe der Flï¿½che insgesamt.
 
-    // Einzelne Objekte, auf die der Vector zeigt, müssen hier noch per delete gelöscht werden, wenn sauber gearbeitet wird.
-    // Todo: Objekte des Vectors am Ende löschen.
+    // Einzelne Objekte, auf die der Vector zeigt, mï¿½ssen hier noch per delete gelï¿½scht werden, wenn sauber gearbeitet wird.
+    // Todo: Objekte des Vectors am Ende lï¿½schen.
 };
